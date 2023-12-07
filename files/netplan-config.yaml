@@ -1,0 +1,25 @@
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    ens18: {}
+    ens19: {}
+  bonds:
+    bond0:
+      dhcp4: no
+      addresses:
+      - 192.168.2.2/22
+      routes:
+      - to: default
+        via: 192.168.2.1
+      interfaces:
+        - ens18
+        - ens19
+      nameservers:
+        addresses:
+        - 77.88.8.8
+        - 77.88.8.1
+      parameters:
+        mode: active-backup
+        primary: ens18
+        mii-monitor-interval: 100

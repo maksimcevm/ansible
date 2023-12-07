@@ -1,0 +1,9 @@
+---
+- name: Add user 
+  hosts: all
+  become: true
+    user:
+      name: user
+      password: "{ {  pwd | password_hash('sha512') } }"
+    vars:
+	  pwd: "123456"

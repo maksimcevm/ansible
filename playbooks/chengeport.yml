@@ -1,0 +1,15 @@
+---
+- name: Change SSH port
+  hosts: all
+  gather_facts: yes
+  become: true
+
+  tasks:
+  - name: Change port
+    ansible.builtin.lineinfile:
+      path: /etc/ssh/sshd_config
+      insertafter: '^#Port '
+      line: Port 2222
+  
+  - name: Restart SSHD
+    service: name=sshd state=restarted
