@@ -1,5 +1,5 @@
 ---
-- name: Install Apache Web Server
+- name: Build bond on remote host
   hosts: all
   gather_facts: yes
   become: yes
@@ -8,13 +8,11 @@
     src_file:  ~/testdir/ansible/files/netplan-config.yaml
     dest_file: /etc/netplan/
   
-
   tasks:
   - name: Rename current netplan config file
     ansible.builtin.shell:
       cmd: "mv /etc/netplan/*.yaml /etc/netplan/old-netplan-conf.yaml.old"
 
-  
   - name: Copy netplan config to server
     ansible.builtin.copy: 
       src: "{{ src_file }}"

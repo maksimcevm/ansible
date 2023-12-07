@@ -1,9 +1,16 @@
 ---
-- name: Add user 
+- name: Add new user
   hosts: all
-  become: true
-    user:
-      name: user
-      password: "{ {  pwd | password_hash('sha512') } }"
-    vars:
-	  pwd: "123456"
+  gather_facts: yes
+  become: yes
+
+  vars:
+    username: 'Maksim'
+    pswd: '123Qwe!'
+
+  tasks:
+    - name: change password for user
+      ansible.builtin.user:
+        name: "{{ username }}"
+        shell: /bin/bash
+        password: "{{ pswd | password_hash('sha512') }}"

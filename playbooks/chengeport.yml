@@ -2,7 +2,7 @@
 - name: Change SSH port
   hosts: all
   gather_facts: yes
-  become: true
+  become: yes
 
   tasks:
   - name: Change port

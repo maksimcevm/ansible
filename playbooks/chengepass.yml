@@ -1,13 +1,15 @@
 ---
 - name: Change password for user
   hosts: all
-  become: true
+  gather_facts: yes
+  become: yes
+
   vars:
-    user: "user"
-    password: 'pass'
+    pswd: 'pass'
+    
   tasks:
     - name: change password for user
       ansible.builtin.user:
-        name: "{{ user }}"
+        name: user 
         state: present
-        password: "{{ password | password_hash('sha512') }}"
+        password: "{{ pswd | password_hash('sha512') }}"
