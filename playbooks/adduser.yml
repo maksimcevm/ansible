@@ -5,7 +5,7 @@
   become: yes
 
   vars:
-    username: 'Maksim'
+    username: 'newuser'
     pswd: '123Qwe!'
 
   tasks:
