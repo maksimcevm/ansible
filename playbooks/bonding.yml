@@ -5,7 +5,7 @@
   become: yes
 
   vars:
-    src_file:  ~/testdir/ansible/files/netplan-config.yaml
+    src_file:  ~/ansible/files/netplan-config.yaml
     dest_file: /etc/netplan/
   
   tasks:
